@@ -1,0 +1,60 @@
+<div class="side-bar">
+  <div class="side-menu">
+    
+    <div class="header-section">
+      <div class="top">
+          <img routerLink="/" src="assets/images/logo.png" />
+      </div>
+      <div class="bottom">
+          <img src="assets/images/avatar.jpg" />
+          <span class="sp-1">Kenbrian </span>
+          <span class="sp-2">Ken.vilgax@gmail.com</span>
+      </div>
+    </div>
+
+    <mat-nav-list>
+
+      <ng-container *ngFor="let data of dashboard">
+
+        <ng-container *ngIf="data.type === 'group' && data.children.length > 0">
+            <h3 mat-subheader>{{data.title}}</h3>
+            <mat-list-item *ngFor="let child of data.children" (click)="handleSideNav(child.url)">
+              <mat-icon mat-list-icon color="primary">{{child.icon}}</mat-icon>
+              <h4 mat-line>{{ child.title }}</h4>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </ng-container>
+
+        <ng-container *ngIf="data.type === 'group_menu'">
+            <mat-list-item [matMenuTriggerFor]="menu">
+
+                <mat-icon mat-list-icon color="primary">{{data.icon}}</mat-icon>
+                <h4 mat-line >{{data.title}}</h4>
+
+                <mat-menu #menu="matMenu">
+                    <ng-template matMenuContent>
+                      <ng-container *ngFor="let child of data.children">
+
+                        <button *ngIf="child.method; else url" (click)="self[child.method]()" mat-menu-item>
+                          <mat-icon color="primary">{{child.icon}}</mat-icon> 
+                          <span>{{child.title}}</span>
+                        </button>
+
+                        <ng-template #url>
+                            <button [routerLink]="child.url" mat-menu-item>
+                              <mat-icon color="primary">{{child.icon}}</mat-icon> 
+                              <span>{{child.title}}</span>
+                            </button>
+                        </ng-template>
+                    </ng-container>
+                    </ng-template>
+                </mat-menu>
+
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </ng-container>
+
+      </ng-container>
+    </mat-nav-list>
+  </div>
+</div>

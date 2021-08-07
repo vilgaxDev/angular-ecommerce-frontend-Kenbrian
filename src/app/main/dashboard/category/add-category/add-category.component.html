@@ -1,0 +1,39 @@
+<div class="mat-elevation-z2">
+    <mat-progress-bar *ngIf="loader" mode="indeterminate"></mat-progress-bar>
+
+    <div class="header">
+        <div class="title">
+            <h3>Add Category</h3>
+        </div>
+        <div class="button">
+            <button mat-icon-button class="danger" mat-dialog-close matTooltip="close"><mat-icon>close</mat-icon></button>
+        </div>
+    </div>
+
+    <div class="body">
+
+        <form name="categoryForm" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Category Title</mat-label>
+                <input matInput placeholder="title" formControlName="title" #autofocus>
+                <mat-error *ngIf="categoryForm.get('title').hasError('required')">The Category Title is required.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Category Description</mat-label>
+                <textarea matInput placeholder="description" formControlName="description" rows="6"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Category position</mat-label>
+                <input type="number" matInput placeholder="position" formControlName="position">
+                <mat-error *ngIf="categoryForm.get('position').hasError('required')">The Category Position is required.</mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+
+        </form>
+
+    </div>
+</div>

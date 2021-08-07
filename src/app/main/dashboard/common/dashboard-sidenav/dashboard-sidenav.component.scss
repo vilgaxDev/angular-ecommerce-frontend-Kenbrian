@@ -1,0 +1,49 @@
+
+.side-bar{
+    background-color: #4b87f51a;
+}
+
+.mat-list-base .mat-subheader {
+    font-weight: 600;
+}
+
+.header-section{
+    text-align: center;
+    height: 16em;
+    background-color: #4b87f547;
+
+    .top{
+        height: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            height: 3em;
+            cursor: pointer;
+        }
+    }
+    .bottom{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: .5em;
+        .sp-1{
+            padding: .5em;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .sp-2{
+            font-size: 14px;
+        }
+        img{
+            width: 6em;
+            border-radius: 50%;
+            border: 4px solid #08133230;
+        }
+    }
+}
+
+h4.mat-line {
+    font-size: 14px !important;
+}
+

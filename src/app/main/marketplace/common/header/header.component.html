@@ -1,0 +1,50 @@
+<mat-toolbar>
+    
+    <div class="logo" routerLink="/">
+        <span>Logo</span>
+    </div>
+
+    <div class="menu">
+        <ul>
+            <li routerLink="/">Home</li>
+            <li [matMenuTriggerFor]="menu_category">Category</li>
+                <mat-menu #menu_category="matMenu" class="menu_category">
+                    <mat-grid-list cols="4" rowHeight="3:1">
+                        <mat-grid-tile *ngFor="let data of categories"><button mat-menu-item>{{data.title}}</button></mat-grid-tile>
+                    </mat-grid-list>
+                </mat-menu>
+            <li>Product</li>
+            <li>About</li>
+            <li>
+                <button mat-icon-button [matMenuTriggerFor]="menu" disableRipple class="account">
+                    <div class="avatar">
+                        <img src="assets/images/avatar.jpg" />
+                        <span>kenbrian</span>
+                        <mat-icon color="primary">keyboard_arrow_down</mat-icon>
+                    </div>
+                </button>
+
+                <mat-menu #menu="matMenu">
+                    <ng-template matMenuContent>
+                        <button *ngIf="!isLoggedin" routerLink="/login" mat-menu-item>
+                            <mat-icon color="primary">person</mat-icon>
+                            <span>Login</span>
+                        </button>
+                        <button *ngIf="!isLoggedin" routerLink="/register" mat-menu-item>
+                            <mat-icon color="primary">group_add</mat-icon>
+                            <span>Register</span>
+                        </button>
+                        <button routerLink="/dashboard" mat-menu-item>
+                            <mat-icon color="primary">dashboard</mat-icon>
+                            <span>Dashboard</span>
+                        </button>
+                        <button *ngIf="isLoggedin" mat-menu-item (click)="logout()">
+                            <mat-icon color="primary">input</mat-icon>
+                            <span>Logout</span>
+                        </button>
+                    </ng-template>
+                </mat-menu>
+            </li>
+        </ul>
+    </div>
+</mat-toolbar>

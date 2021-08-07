@@ -1,0 +1,23 @@
+
+<mat-sidenav-container class="side-navbar" (backdropClick)="backdropCheck()" autosize>
+
+  <mat-sidenav [mode]="mode" [opened]="opened" [position]="position" [fixedInViewport]="true">
+
+    <app-dashboard-sidenav (closeNavBar)="closeNavBar($event)"></app-dashboard-sidenav>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <app-dashboard-header (navBarOpenEvent) = "navBarOpenEvent($event)" (navPosition)="navPosition($event)"></app-dashboard-header>
+
+    <div class="dashboard-main-section">
+      <router-outlet></router-outlet>
+    </div>
+
+    <app-dashboard-footer class="onlyDesktop"></app-dashboard-footer>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+

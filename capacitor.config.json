@@ -1,0 +1,7 @@
+{
+  "appId": "com.ecommerce.kenbrian",
+  "appName": "kenbrian",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist"
+}

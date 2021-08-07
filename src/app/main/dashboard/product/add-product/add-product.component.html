@@ -1,0 +1,101 @@
+<div class="mat-elevation-z2">
+        <mat-progress-bar *ngIf="loader" mode="indeterminate"></mat-progress-bar>
+
+        <div class="header">
+            <div class="title">
+                <h3>Add Product</h3>
+            </div>
+            <div class="button">
+                <button mat-icon-button class="danger" mat-dialog-close matTooltip="close"><mat-icon>close</mat-icon></button>
+            </div>
+        </div>
+    
+        <div class="body">
+    
+            <form name="productForm" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Product Title</mat-label>
+                            <input matInput placeholder="title" formControlName="title" #autofocus>
+                            <mat-error *ngIf="productForm.get('title').hasError('required')">The Product Title is required.</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Product position</mat-label>
+                            <input type="number" matInput placeholder="position" formControlName="position">
+                            <mat-error *ngIf="productForm.get('position').hasError('required')">The Product position is required.</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>CategoryId</mat-label>
+                            <mat-select formControlName="categoryId">
+                                <mat-option *ngFor="let data of categoryData" [value]="data._id">
+                                    {{data.title}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="productForm.get('categoryId').hasError('required')">The CategoryId is required.</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>SubCategoryId</mat-label>
+                            <mat-select formControlName="subCategoryId">
+                                <mat-option *ngFor="let data of subCategoryData" [value]="data._id">
+                                    {{data.title}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="productForm.get('subCategoryId').hasError('required')">The SubCategoryId is required.</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Price</mat-label>
+                            <input type="number" matInput placeholder="price" formControlName="price">
+                            <mat-error *ngIf="productForm.get('price').hasError('required')">Price is required.</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Quantity</mat-label>
+                            <input type="number" matInput placeholder="quantity" formControlName="quantity">
+                            <mat-error *ngIf="productForm.get('quantity').hasError('required')">Quantity is required.</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-12">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Product Description</mat-label>
+                            <textarea matInput placeholder="description" formControlName="description" rows="6"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-label>Thumbnail Image: </mat-label> &nbsp;&nbsp;
+                        <input type="file" (change)="handleImage($event)" accept="image/*">
+                    </div>
+                    <div class="col-md-6">
+                        <mat-slide-toggle color="primary" formControlName="feature">Features</mat-slide-toggle>
+                    </div>
+                    <div class="col-md-12" style="margin: 2em 2em 0 0;">
+                        <span class="header-text">Product Images</span> &nbsp;&nbsp;
+                        <button type="button" mat-raised-button (click)="add_more_row()" color="primary" class="m-b-1"><mat-icon>add_circle</mat-icon> Add More</button>
+                        <div formArrayName="product_images" *ngFor="let item of productForm.get('product_images')['controls']; let i = index" class="product_images">
+                            <div [formGroupName]="i">
+                                    <label>
+                                        <img [src]="preview_images[i] ? preview_images[i] : 'assets/images/noimage.jpg'" height="100px" width="150px"/>
+                                        <input type="file" (change)="handleMultipleImage($event,i)" accept="image/*" style="visibility: hidden; width: 0;"/>
+                                    </label>
+                            </div>
+                            <div class="actions">
+                                <button type="button" mat-icon-button (click)="remove_row(i)" color="warn"><mat-icon>highlight_off</mat-icon></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button mat-raised-button color="primary" type="submit">Submit</button>
+                    </div>
+                </div>    
+            </form>
+        </div>
+    </div>

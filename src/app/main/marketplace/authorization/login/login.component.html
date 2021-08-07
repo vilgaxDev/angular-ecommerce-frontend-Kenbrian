@@ -1,0 +1,36 @@
+<div class="login">
+  <mat-card>
+    <mat-progress-bar mode="indeterminate" *ngIf="loader"></mat-progress-bar>
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon color="primary">verified_user</mat-icon>
+        <p>Login to your account</p>
+        <hr class="line"/>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form name="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter email</mat-label>
+          <input matInput placeholder="Enter email" formControlName="email" required/>
+          <mat-error *ngIf="loginForm.get('email').hasError('required')">The email is required.</mat-error>
+          <mat-error *ngIf="loginForm.get('email').hasError('email')">The email address is not valid.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Enter password</mat-label>
+          <input type="password" matInput placeholder="Enter password" formControlName="password" required/>
+          <mat-error *ngIf="loginForm.get('password').hasError('required')">The password is required</mat-error>
+          <mat-error *ngIf="loginForm.get('password').hasError('minlength')">The password min-length is 6</mat-error>
+        </mat-form-field>
+
+        <div class="action">
+          <button mat-raised-button type="submit" color="primary">
+            Submit
+          </button>
+          <a routerLink="/register">Create an account</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

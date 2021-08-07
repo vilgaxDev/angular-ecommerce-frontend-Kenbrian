@@ -1,0 +1,39 @@
+.header{
+    display: flex;
+    padding: 0em 1em;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #607d8b54;
+}
+
+.mat-form-field{
+    width: 100%;
+}
+
+table{
+    width: 100%;
+    th,td{
+        padding: 0em .5em;
+    }
+}
+
+.text-center{
+    display: flex;
+    justify-content: center;
+    height: 10em;
+    align-items: center;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: unset;
+}
+.mat-expansion-panel-header {
+    padding: 0 .5em 0 0;
+}
+
+@media only screen and (max-width: 400px) {
+    table{
+        display: block;
+        overflow-x: auto;
+    }
+  }

@@ -1,0 +1,26 @@
+
+mat-sidenav-container{
+    height: 100vh;
+}
+
+mat-sidenav{
+    width: 16em;
+}
+
+.mat-drawer-side {
+    border-right: 1px solid #dcdcdc5e;
+    border-left: 1px solid #dcdcdc5e;
+}
+
+.dashboard-main-section{
+    padding: 1.5em;
+}
+
+@media only screen and (max-width: 900px) {
+    .dashboard-main-section{
+        padding: .5em;
+    }
+    .onlyDesktop{
+        display: none;
+    }
+  }

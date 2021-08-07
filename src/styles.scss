@@ -1,0 +1,34 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body{
+    margin: 0;
+    background: #F5F5F5;
+}
+
+.snackbar-success {
+    color: #ffffff;
+    background: #4caf50;
+  }
+
+.snackbar-danger {
+    color: #ffffff;
+    background: #f44336;
+  }
+
+.hidden{
+    display: none !important;
+}
+
+.visible{
+    display: block;
+    visibility: visible;
+}
+
+// mat-icon color css
+.danger{
+  color: red;
+}
+
+.success{
+  color: green;
+}

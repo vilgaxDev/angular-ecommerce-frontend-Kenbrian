@@ -1,0 +1,49 @@
+<div class="mat-elevation-z2">
+        <mat-progress-bar *ngIf="loader" mode="indeterminate"></mat-progress-bar>
+
+        <div class="header">
+            <div class="title">
+                <h3>Add SubCategory</h3>
+            </div>
+            <div class="button">
+                <button mat-icon-button class="danger" mat-dialog-close matTooltip="close"><mat-icon>close</mat-icon></button>
+            </div>
+        </div>
+    
+        <div class="body">
+    
+            <form name="subcategoryForm" [formGroup]="subcategoryForm" (ngSubmit)="onSubmit()">
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Subcategory Title</mat-label>
+                    <input matInput placeholder="title" formControlName="title" #autofocus>
+                    <mat-error *ngIf="subcategoryForm.get('title').hasError('required')">The Subcategory Title is required.</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Category Id</mat-label>
+                    <mat-select formControlName="categoryId">
+                        <mat-option *ngFor="let data of categoryData" [value]="data._id">
+                            {{data.title}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="subcategoryForm.get('title').hasError('required')">The CategoryId is required.</mat-error>
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Subcategory Description</mat-label>
+                    <textarea matInput placeholder="description" formControlName="description" rows="6"></textarea>
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Subcategory Position</mat-label>
+                    <input type="number" matInput placeholder="position" formControlName="position">
+                    <mat-error *ngIf="subcategoryForm.get('position').hasError('required')">The Subcategory Position is required.</mat-error>
+                </mat-form-field>
+    
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+    
+            </form>
+    
+        </div>
+    </div>
